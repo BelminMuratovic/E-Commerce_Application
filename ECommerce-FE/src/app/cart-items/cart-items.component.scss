@@ -1,0 +1,123 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.fixed {
+  position: fixed;
+  width: 100%;
+  transition: 0.2s linear;
+  top: 0px;
+}
+
+.nofixed {
+  position: static;
+  transition: 0.2s linear;
+  top: -50px;
+}
+
+.navbar {
+  background-color: white;
+  border-bottom: 1px solid rgb(204, 204, 204);
+}
+
+.title {
+  padding-top: 30px;
+  padding-left: 100px;
+  margin-bottom: 30px;
+  font-size: 50px;
+}
+
+.custom-table td {
+  border: none;
+  padding: 10px;
+}
+
+.custom-table-container {
+  width: 1000px;
+  margin: 0 auto;
+  border: 1px solid gray;
+  border-radius: 2px;
+}
+
+th {
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+}
+
+.spacer-row {
+  height: 10px;
+}
+
+table tr {
+  height: 50px;
+}
+
+.clearCartText {
+  text-align: right;
+  width: 33%;
+}
+
+.clearCartText span {
+  display: inline;
+  color: red;
+  cursor: pointer;
+}
+
+.product {
+  width: 33%;
+}
+
+.quantity {
+  text-align: center;
+}
+
+.quantityTd {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.price {
+  text-align: right;
+}
+
+.addingInCart {
+  display: flex;
+  align-items: center;
+}
+
+.minusBtn,
+.plusBtn {
+  width: 45px;
+  height: 35px;
+  font-size: 20px;
+  background-color: grey;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.showQuantity {
+  width: 200px;
+  background-color: white;
+  color: black;
+}
+
+.minusBtn,
+.plusBtn,
+.quantity {
+  margin: 0;
+  border-top: 1px solid gray;
+}
+
+.btn-container {
+  padding-left: 10px;
+  padding-bottom: 20px;
+}
+
+.btn {
+  margin-top: 20px;
+  padding: 5px;
+  background-color: rgb(35, 83, 196);
+}

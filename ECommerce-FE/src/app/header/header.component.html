@@ -1,0 +1,62 @@
+<div class="container">
+  <div class="icons">
+    <i class="bi bi-house-fill" (click)="goToHome()"></i>
+    <i class="bi bi-cart-fill" (click)="goToCart()"
+      ><span class="cartStatus"
+        ><b>{{ cartItemsSize$ | async }}</b></span
+      ></i
+    >
+  </div>
+  <div class="admin">
+    <div class="administrator" (click)="openLoginForm()">
+      {{ administrator }}
+    </div>
+
+    <div *ngIf="loginActivated" class="login-form">
+      <div class="form-group">
+        <label for="user_name">Username</label>
+        <input
+          type="text"
+          name="user_name"
+          class="form-control form"
+          [(ngModel)]="username"
+        />
+      </div>
+      <div class="form-group">
+        <label for="pword">Password</label>
+        <input
+          type="password"
+          name="pword"
+          class="form-control form"
+          [(ngModel)]="password"
+        />
+      </div>
+      <div class="btn-container">
+        <div class="error">{{ errorMsg }}</div>
+        <button class="btn btn-dark" (click)="login()">Login</button>
+      </div>
+    </div>
+
+    <div>
+      <i
+        *ngIf="caretDownActivated"
+        class="caret bi bi-caret-down-fill"
+        (click)="openAdminOptions()"
+      ></i>
+
+      <div *ngIf="adminOptions" class="custom-table-container">
+        <table class="table custom-table">
+          <tr>
+            <td (click)="openOrders()">Manage Orders</td>
+          </tr>
+          <tr>
+            <td (click)="openProducts()">Manage Products</td>
+          </tr>
+          <tr>
+            <td (click)="logout()">Log Out</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+<nav
+  class="navbar"
+  (scroll)="onscroll()"
+  [ngClass]="navbarfixed ? 'fixed' : 'nofixed'"
+>
+  <app-header></app-header>
+</nav>
+
+<div class="container">
+  <div class="left">
+    <div class="custom-table-container">
+      <table class="table custom-table">
+        <tr>
+          <td class="first_element" (click)="getAllCategories()">
+            All Categories
+          </td>
+        </tr>
+        <tr>
+          <td class="bordered" (click)="getByType('Bread')">Bread</td>
+        </tr>
+        <tr>
+          <td class="bordered" (click)="getByType('Fruits')">Fruits</td>
+        </tr>
+        <tr>
+          <td class="bordered" (click)="getByType('Seasonings')">Seasonings</td>
+        </tr>
+        <tr>
+          <td class="bordered last_element" (click)="getByType('Vegetables')">
+            Vegetables
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="right">
+    <div class="gridContainer">
+      <div class="divForBoxes" *ngFor="let product of products">
+        <app-box
+          *ngIf="product.quantity != 0"
+          [index]="product.id"
+          [prod]="product"
+        ></app-box>
+      </div>
+    </div>
+  </div>
+</div>

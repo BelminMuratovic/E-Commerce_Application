@@ -1,0 +1,42 @@
+<div class="container">
+  <h3>New Product</h3>
+
+  <label for="productType">Type</label>
+  <select
+    name="productType"
+    class="form-control form"
+    [(ngModel)]="data.productType"
+    required
+  >
+    <option value="Bread">Bread</option>
+    <option value="Fruits">Fruits</option>
+    <option value="Seasonings">Seasonings</option>
+    <option value="Vegetables">Vegetables</option>
+  </select>
+
+  <label for="productName">Name</label>
+  <input type="text" class="form-control form" [(ngModel)]="data.productName" />
+
+  <label for="productQuantity">Quantity</label>
+  <input
+    type="text"
+    class="form-control form"
+    placeholder=""
+    [(ngModel)]="data.productQuantity"
+  />
+
+  <label for="productPrice">Price</label>
+  <input
+    type="text"
+    class="form-control form"
+    placeholder=""
+    [(ngModel)]="data.productPrice"
+  />
+
+  <div class="col-md-6">
+    <input type="file" (change)="onFileChanged($event)" />
+  </div>
+
+  <button class="btn btn-dark" (click)="saveProduct()">Save</button>
+  <button class="btn btn-dark cancel" (click)="cancel()">Cancel</button>
+</div>

@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="top">
+    <img [src]="prod.retrievedImage" width="348px" height="198px" />
+  </div>
+  <div class="name">{{ prod.name }}</div>
+  <div class="price">€{{ prod.price }}</div>
+  <div class="addToCart" (click)="addItemToCart($event)">
+    <div *ngIf="ifNotAdded">ADD TO CART</div>
+    <div *ngIf="ifAdded" class="addingInCart">
+      <button class="minusBtn" (click)="decreaseProductQuantity($event)">
+        -
+      </button>
+      <div class="quantity">{{ quantityOfSingleProduct }} in cart</div>
+      <button
+        class="plusBtn"
+        (click)="
+          quantityOfProduct !== quantityOfSingleProduct
+            ? increaseProductQuantity($event)
+            : null
+        "
+      >
+        +
+      </button>
+    </div>
+  </div>
+</div>

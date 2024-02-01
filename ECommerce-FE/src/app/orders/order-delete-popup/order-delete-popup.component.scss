@@ -1,0 +1,49 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  position: fixed;
+  width: 350px;
+  margin: 0 auto;
+  padding: 20px;
+  top: 200px;
+  transform: translateY(-10%);
+  background-color: white;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.1), 0 0 60px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+h3 {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+}
+
+.delete {
+  font-size: large;
+  padding-bottom: 30px;
+}
+
+.btn-yes {
+  background-color: rgb(35, 83, 196);
+  border-color: rgb(35, 83, 196);
+  color: white;
+  padding: 5px;
+  width: 80px;
+  margin-top: 20px;
+  margin-left: 50px;
+}
+
+.btn-no {
+  background-color: red;
+  color: white;
+  border-color: #e0e0e0;
+  padding: 5px;
+  width: 80px;
+  margin-right: 50px;
+  margin-top: 20px;
+  float: right;
+  z-index: 1000;
+}

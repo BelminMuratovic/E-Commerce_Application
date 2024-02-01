@@ -1,0 +1,82 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 350px;
+  height: 340px;
+  border: 1px solid gray;
+  border-radius: 7px;
+  position: relative;
+
+  overflow-y: auto;
+
+  float: left;
+  margin-left: 50px;
+  margin-bottom: 50px;
+}
+
+.top {
+  height: 200px;
+}
+
+.name {
+  height: 58px;
+  font-size: 25px;
+  padding: 10px;
+  padding-left: 20px;
+}
+
+.price {
+  height: 40px;
+  font-size: normal;
+  padding-left: 20px;
+}
+
+.addToCart {
+  height: 40px;
+  background-color: grey;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.addingInCart {
+  display: flex;
+  align-items: center;
+  background-color: white;
+}
+
+.minusBtn,
+.plusBtn,
+.quantity {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.minusBtn,
+.plusBtn {
+  width: 59px;
+  font-size: 20px;
+  background-color: grey;
+  border-radius: 6px;
+}
+
+.quantity {
+  width: 230px;
+  background-color: white;
+  color: black;
+}
+
+.minusBtn,
+.plusBtn,
+.quantity {
+  margin: 0;
+  border-top: 1px solid gray;
+}
+

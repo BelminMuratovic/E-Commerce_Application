@@ -1,0 +1,75 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.fixed {
+  position: fixed;
+  width: 100%;
+  transition: 0.2s linear;
+  top: 0px;
+}
+
+.nofixed {
+  position: static;
+  transition: 0.2s linear;
+  top: -50px;
+}
+
+.navbar {
+  background-color: white;
+  border-bottom: 1px solid rgb(204, 204, 204);
+}
+
+.container {
+  width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.search-bar {
+  margin-top: 40px;
+  margin-bottom: 30px;
+  .form {
+    padding: 5px;
+  }
+}
+
+table {
+  width: 100%;
+}
+
+.number {
+  width: 5%;
+}
+
+.name {
+  width: 30%;
+}
+
+.address {
+  width: 35%;
+}
+
+.date {
+  width: 10%;
+}
+
+.edit {
+  width: 10%;
+  color: rgb(35, 83, 196);
+  text-align: end;
+}
+
+.edit-text {
+  cursor: pointer;
+}
+
+.delete {
+  color: red;
+  text-align: end;
+}
+
+.delete-text {
+  cursor: pointer;
+}

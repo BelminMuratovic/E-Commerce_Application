@@ -1,0 +1,48 @@
+<nav
+  class="navbar"
+  (scroll)="onscroll()"
+  [ngClass]="navbarfixed ? 'fixed' : 'nofixed'"
+>
+  <app-header></app-header>
+</nav>
+
+<div class="container">
+  <div class="btn-container">
+    <button class="btn btn-dark" (click)="newProduct()">New Product</button>
+  </div>
+  <div class="search-bar">
+    <form>
+      <input
+        type="text"
+        [formControl]="searchControl"
+        placeholder="Search..."
+        class="form-control form"
+      />
+    </form>
+  </div>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th class="number"></th>
+        <th class="type">Type</th>
+        <th class="title">Title</th>
+        <th class="quantity">Quantity</th>
+        <th class="price">Price</th>
+        <th class="edit"></th>
+        <th class="delete"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let prod of products; let i = index">
+        <td class="number">{{ i + 1 }}</td>
+        <td class="type">{{ prod.type }}</td>
+        <td class="title">{{ prod.name }}</td>
+        <td class="quantity">{{ prod.quantity }}</td>
+        <td class="price">&euro;{{ prod.price }}</td>
+        <td class="edit"><span class="edit-text" (click)="edit(i)">edit</span></td>
+        <td class="delete"><span class="delete-text" (click)="delete(i)">delete</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

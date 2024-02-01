@@ -1,0 +1,63 @@
+<nav
+  class="navbar"
+  (scroll)="onscroll()"
+  [ngClass]="navbarfixed ? 'fixed' : 'nofixed'"
+>
+  <app-header></app-header>
+</nav>
+
+<div class="title">Shopping cart</div>
+
+<div class="custom-table-container">
+  <table class="table custom-table">
+    <thead>
+      <tr>
+        <td colspan="2">
+          You have <b>{{ cartItemsService.cartItemsSize }}</b> items in cart
+        </td>
+        <td class="clearCartText alignRight" (click)="clearCart()">
+          <span>Clear Shopping Cart</span>
+        </td>
+      </tr>
+      <tr class="spacer-row">
+        <td colspan="3"></td>
+      </tr>
+      <tr>
+        <th class="product">Product</th>
+        <th class="quantity">Quantity</th>
+        <th class="price">Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let prod of cartItemsService.products.entries()">
+        <td class="product">{{ prod[1].name }}</td>
+        <td class="quantityTd">
+          <div class="addingInCart">
+            <button
+              class="minusBtn"
+              (click)="decreaseProductQuantity(prod[1].id)"
+            >
+              -
+            </button>
+            <div class="showQuantity">{{ prod[1].quantity }} in cart</div>
+            <button
+              class="plusBtn"
+              (click)="increaseProductQuantity(prod[1].id)"
+            >
+              +
+            </button>
+          </div>
+        </td>
+        <td class="price">&euro;{{ prod[1].price * prod[1].quantity }}</td>
+      </tr>
+      <tr class="spacer-row">
+        <td colspan="3"></td>
+      </tr>
+      <tr>
+        <div class="btn-container">
+          <button class="btn btn-dark" (click)="checkOut()">Check Out</button>
+        </div>
+      </tr>
+    </tbody>
+  </table>
+</div>

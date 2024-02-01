@@ -1,0 +1,55 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  position: fixed;
+  top: 90px;
+  transform: translateY(-10%);
+  background-color: white;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.1), 0 0 60px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  z-index: 100000;
+}
+
+h3 {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+}
+
+label {
+  margin-top: 5px;
+  justify-content: space-between;
+}
+
+.form {
+  padding: 5px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+
+.btn-update {
+  background-color: rgb(35, 83, 196);
+  border-color: rgb(35, 83, 196);
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-top: 20px;
+}
+
+.btn-cancel {
+  background-color: #e0e0e0;
+  color: #333;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-top: 20px;
+  border-color: #e0e0e0;
+  float: right;
+  z-index: 1000;
+}

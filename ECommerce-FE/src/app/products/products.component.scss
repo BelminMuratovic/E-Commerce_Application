@@ -1,0 +1,92 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.fixed {
+  position: fixed;
+  width: 100%;
+  transition: 0.2s linear;
+  top: 0px;
+}
+
+.nofixed {
+  position: static;
+  transition: 0.2s linear;
+  top: -50px;
+}
+
+.navbar {
+  background-color: white;
+  border-bottom: 1px solid rgb(204, 204, 204);
+}
+
+.container {
+  width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.btn-container {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.btn {
+  background-color: rgb(35, 83, 196);
+  padding: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-color: rgb(35, 83, 196);
+}
+
+.form {
+  padding: 5px;
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+}
+
+.number {
+  width: 5%;
+}
+
+.type {
+  width: 25%;
+}
+
+.title {
+  width: 25%;
+}
+
+.quantity {
+  width: 15%;
+  text-align: center;
+}
+
+.price {
+  width: 15%;
+  text-align: center;
+}
+
+.edit {
+  width: 10%;
+  color: rgb(35, 83, 196);
+  text-align: center;
+}
+
+.edit-text {
+  cursor: pointer;
+}
+
+.delete {
+  width: 15%;
+  color: red;
+  text-align: end;
+}
+
+.delete-text {
+  cursor: pointer;
+}
