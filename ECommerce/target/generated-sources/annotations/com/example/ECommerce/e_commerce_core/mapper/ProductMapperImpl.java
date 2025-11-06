@@ -11,8 +11,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-02-01T21:24:47+0100",
-    comments = "version: 1.4.2.Final, compiler: javac, environment: Java 21.0.1 (Oracle Corporation)"
+    date = "2025-11-06T20:31:32+0100",
+    comments = "version: 1.4.2.Final, compiler: Eclipse JDT (IDE) 3.44.0.v20251023-0518, environment: Java 21.0.8 (Eclipse Adoptium)"
 )
 @Component
 public class ProductMapperImpl implements ProductMapper {
@@ -25,17 +25,17 @@ public class ProductMapperImpl implements ProductMapper {
 
         ProductEntity productEntity = new ProductEntity();
 
-        if ( product.getType() != null ) {
-            productEntity.setType( product.getType() );
-        }
         if ( product.getName() != null ) {
             productEntity.setName( product.getName() );
+        }
+        if ( product.getPrice() != null ) {
+            productEntity.setPrice( product.getPrice() );
         }
         if ( product.getQuantity() != null ) {
             productEntity.setQuantity( product.getQuantity() );
         }
-        if ( product.getPrice() != null ) {
-            productEntity.setPrice( product.getPrice() );
+        if ( product.getType() != null ) {
+            productEntity.setType( product.getType() );
         }
 
         return productEntity;
@@ -52,17 +52,17 @@ public class ProductMapperImpl implements ProductMapper {
         if ( productEntity.getId() != null ) {
             product.setId( productEntity.getId() );
         }
-        if ( productEntity.getType() != null ) {
-            product.setType( productEntity.getType() );
-        }
         if ( productEntity.getName() != null ) {
             product.setName( productEntity.getName() );
+        }
+        if ( productEntity.getPrice() != null ) {
+            product.setPrice( productEntity.getPrice() );
         }
         if ( productEntity.getQuantity() != null ) {
             product.setQuantity( productEntity.getQuantity() );
         }
-        if ( productEntity.getPrice() != null ) {
-            product.setPrice( productEntity.getPrice() );
+        if ( productEntity.getType() != null ) {
+            product.setType( productEntity.getType() );
         }
 
         return product;
@@ -74,17 +74,17 @@ public class ProductMapperImpl implements ProductMapper {
             return;
         }
 
-        if ( product.getType() != null ) {
-            productEntity.setType( product.getType() );
-        }
-        else {
-            productEntity.setType( null );
-        }
         if ( product.getName() != null ) {
             productEntity.setName( product.getName() );
         }
         else {
             productEntity.setName( null );
+        }
+        if ( product.getPrice() != null ) {
+            productEntity.setPrice( product.getPrice() );
+        }
+        else {
+            productEntity.setPrice( null );
         }
         if ( product.getQuantity() != null ) {
             productEntity.setQuantity( product.getQuantity() );
@@ -92,11 +92,11 @@ public class ProductMapperImpl implements ProductMapper {
         else {
             productEntity.setQuantity( null );
         }
-        if ( product.getPrice() != null ) {
-            productEntity.setPrice( product.getPrice() );
+        if ( product.getType() != null ) {
+            productEntity.setType( product.getType() );
         }
         else {
-            productEntity.setPrice( null );
+            productEntity.setType( null );
         }
     }
 

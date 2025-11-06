@@ -5,6 +5,7 @@ import com.example.ECommerce.e_commerce_api.model.order.OrderCreateRequest;
 import com.example.ECommerce.e_commerce_api.model.order.OrderUpdateRequest;
 import com.example.ECommerce.e_commerce_dao.model.OrderEntity;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.NullValueCheckStrategy;
 import org.mapstruct.factory.Mappers;
@@ -15,10 +16,12 @@ import java.util.List;
 public interface OrderMapper {
     OrderMapper INSTANCE = Mappers.getMapper(OrderMapper.class);
 
+    @Mapping(target = "id", ignore = true)
     OrderEntity dtoToEntity(OrderCreateRequest order);
 
     Order entityToDto(OrderEntity orderEntity);
 
+    @Mapping(target = "id", ignore = true)
     void updateEntity(OrderUpdateRequest order, @MappingTarget OrderEntity orderEntity);
 
     List<Order> entitiesToDtos(List<OrderEntity> orderEntity);

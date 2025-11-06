@@ -15,7 +15,6 @@ com/example/ECommerce/e_commerce_core/mapper/ProductMapper.class
 com/example/ECommerce/e_commerce_core/mapper/ProductMapperImpl.class
 com/example/ECommerce/e_commerce_core/impl/ProductServiceImpl.class
 com/example/ECommerce/e_commerce_api/model/product/ProductUpdateRequest.class
-com/example/ECommerce/e_commerce_rest/configuration/SwaggerConfiguration.class
 com/example/ECommerce/e_commerce_core/mapper/OrderMapperImpl.class
 com/example/ECommerce/ECommerceApplication.class
 com/example/ECommerce/e_commerce_dao/model/ProductEntity.class

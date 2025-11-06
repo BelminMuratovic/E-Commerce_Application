@@ -1,1 +1,69 @@
-ECommerce-FE/node_modules/
+# =========================
+# Spring Boot / Java (backend)
+# =========================
+
+# Maven
+/ECommerce/target/
+/ECommerce/.mvn/wrapper/maven-wrapper.jar
+!/ECommerce/**/src/main/**/target/
+!/ECommerce/**/src/test/**/target/
+
+# IDE / Editor files
+## STS
+/ECommerce/.apt_generated
+/ECommerce/.classpath
+/ECommerce/.factorypath
+/ECommerce/.project
+/ECommerce/.settings
+/ECommerce/.springBeans
+/ECommerce/.sts4-cache
+
+## IntelliJ IDEA
+/ECommerce/.idea
+/ECommerce/*.iws
+/ECommerce/*.iml
+/ECommerce/*.ipr
+
+## NetBeans
+/ECommerce/nbproject/private/
+/ECommerce/nbbuild/
+/ECommerce/nbdist/
+/ECommerce/.nb-gradle/
+(ECommerce/build/)
+
+## VS Code
+/ECommerce/.vscode/
+
+# =========================
+# Node / Angular (frontend)
+# =========================
+
+# Node modules
+/ECommerce-FE/node_modules/
+
+# Build folders
+/ECommerce-FE/dist/
+/ECommerce-FE/dist-ssr/
+
+# Logs
+/ECommerce-FE/*.local
+/ECommerce-FE/npm-debug.log*
+/ECommerce-FE/yarn-debug.log*
+/ECommerce-FE/yarn-error.log*
+/ECommerce-FE/pnpm-debug.log*
+/ECommerce-FE/lerna-debug.log*
+
+# IDE / Editor files
+/ECommerce-FE/.vscode/*
+!/ECommerce-FE/.vscode/extensions.json
+/ECommerce-FE/.idea
+
+# =========================
+# System / OS files
+# =========================
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

@@ -7,7 +7,6 @@
 /home/hp/Desktop/E-Commerce_Application/ECommerce/src/main/java/com/example/ECommerce/e_commerce_api/model/product/ProductCreateRequest.java
 /home/hp/Desktop/E-Commerce_Application/ECommerce/src/main/java/com/example/ECommerce/e_commerce_rest/rest/OrderRestService.java
 /home/hp/Desktop/E-Commerce_Application/ECommerce/src/main/java/com/example/ECommerce/ECommerceApplication.java
-/home/hp/Desktop/E-Commerce_Application/ECommerce/src/main/java/com/example/ECommerce/e_commerce_rest/configuration/SwaggerConfiguration.java
 /home/hp/Desktop/E-Commerce_Application/ECommerce/src/main/java/com/example/ECommerce/e_commerce_dao/repository/OrderRepository.java
 /home/hp/Desktop/E-Commerce_Application/ECommerce/src/main/java/com/example/ECommerce/e_commerce_api/model/product/Product.java
 /home/hp/Desktop/E-Commerce_Application/ECommerce/src/main/java/com/example/ECommerce/e_commerce_api/model/order/OrderUpdateRequest.java

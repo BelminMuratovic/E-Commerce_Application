@@ -7,9 +7,7 @@ import com.example.ECommerce.e_commerce_api.model.product.ProductUpdateRequest;
 import com.example.ECommerce.e_commerce_core.mapper.ProductMapper;
 import com.example.ECommerce.e_commerce_dao.model.ProductEntity;
 import com.example.ECommerce.e_commerce_dao.repository.ProductRepository;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -24,18 +22,11 @@ import java.util.zip.Deflater;
 import java.util.zip.Inflater;
 
 @Service
-@AllArgsConstructor
 @RequiredArgsConstructor
 public class ProductServiceImpl implements ProductService {
 
-    @Autowired
-    private ProductRepository productRepository;
-    private ProductMapper productMapper;
-
-    @Autowired
-    public ProductServiceImpl(ProductMapper productMapper) {
-        this.productMapper = productMapper;
-    }
+    private final ProductRepository productRepository;
+    private final ProductMapper productMapper;
 
     @Override
     public ResponseEntity<List<Product>> getProducts() throws Exception {
@@ -76,7 +67,13 @@ public class ProductServiceImpl implements ProductService {
             ProductEntity product = new ProductEntity();
             product.setImageName(productEntity.getImageName());
             product.setImageType(productEntity.getImageType());
-            product.setPicByte(decompressBytes(productEntity.getPicByte()));
+
+            // Provjera null prije dekompresije
+            if (productEntity.getPicByte() != null) {
+                product.setPicByte(decompressBytes(productEntity.getPicByte()));
+            } else {
+                product.setPicByte(new byte[0]); // prazan niz ako nema slike
+            }
 
             return new ResponseEntity<>(product, HttpStatus.OK);
         } else {

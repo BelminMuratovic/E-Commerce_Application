@@ -27,7 +27,6 @@ public class OrderServiceImpl implements OrderService {
     private OrderRepository orderRepository;
     private OrderMapper orderMapper;
 
-    @Autowired
     public OrderServiceImpl(OrderMapper orderMapper) {
         this.orderMapper = orderMapper;
     }
