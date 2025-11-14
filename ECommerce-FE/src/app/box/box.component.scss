@@ -4,8 +4,8 @@
 }
 
 .container {
-  width: 350px;
-  height: 340px;
+  width: 88%;
+  height: 100%;
   border: 1px solid gray;
   border-radius: 7px;
   position: relative;
@@ -35,7 +35,7 @@
 }
 
 .addToCart {
-  height: 40px;
+  height: 20%;
   background-color: grey;
   color: white;
   display: flex;
@@ -48,12 +48,12 @@
   display: flex;
   align-items: center;
   background-color: white;
+  width: 100%;
 }
 
 .minusBtn,
 .plusBtn,
 .quantity {
-  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -61,14 +61,14 @@
 
 .minusBtn,
 .plusBtn {
-  width: 59px;
-  font-size: 20px;
+  width: 15%;
+  font-size: 14px;
   background-color: grey;
   border-radius: 6px;
 }
 
 .quantity {
-  width: 230px;
+  width: 70%;
   background-color: white;
   color: black;
 }
@@ -79,4 +79,3 @@
   margin: 0;
   border-top: 1px solid gray;
 }
-

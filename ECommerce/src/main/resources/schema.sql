@@ -1,0 +1,19 @@
+TRUNCATE TABLE products RESTART IDENTITY;
+TRUNCATE TABLE orders RESTART IDENTITY;
+CREATE TABLE IF NOT EXISTS orders (
+    id BIGSERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    address VARCHAR(255) NOT NULL,
+    date DATE NOT NULL,
+    products JSONB NOT NULL DEFAULT '[]'
+);
+CREATE TABLE IF NOT EXISTS products (
+    id BIGSERIAL PRIMARY KEY,
+    type VARCHAR(255) NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    quantity BIGINT NOT NULL,
+    price BIGINT NOT NULL,
+    image_name VARCHAR(255),
+    image_type VARCHAR(255),
+    pic_byte BYTEA
+);

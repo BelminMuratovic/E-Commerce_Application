@@ -1,0 +1,21 @@
+<div class="container">
+    <table class="table custom-table">
+        <thead>
+            <tr>
+                <th class="product">Product</th>
+                <th class="quantity">Quantity</th>
+                <th class="price">Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let prod of data.products">
+                <td class="product">{{ prod.name }}</td>
+                <td class="quantity">{{ prod.quantity }}</td>
+                <td class="price">&euro;{{ prod.price * prod.quantity }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="btn-container">
+        <button class="btn btn-dark btn-cancel" (click)="cancel()">Cancel</button>
+    </div>
+</div>

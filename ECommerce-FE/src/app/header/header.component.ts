@@ -22,6 +22,7 @@ export class HeaderComponent implements OnInit {
   caretDownActivated: boolean = false;
   adminOptions: boolean = false;
   firstClickAfterOpen = false;
+  adminFirstClickAfterOpen = false;
   cartItemsSize$!: Observable<number>;
 
   constructor(
@@ -87,10 +88,10 @@ export class HeaderComponent implements OnInit {
         this.firstClickAfterOpen = true;
         return;
       }
-
       if (
         !clickedElement.closest('.login-form') &&
-        !clickedElement.closest('.form-group')
+        !clickedElement.closest('.form-group') &&
+        !clickedElement.closest('.administrator')
       ) {
         this.loginActivated = false;
         this.firstClickAfterOpen = false;
@@ -98,17 +99,17 @@ export class HeaderComponent implements OnInit {
     }
 
     if (this.adminOptions) {
-      if (!this.firstClickAfterOpen) {
-        this.firstClickAfterOpen = true;
+      if (!this.adminFirstClickAfterOpen) {
+        this.adminFirstClickAfterOpen = true;
         return;
       }
-
       if (
         !clickedElement.closest('.custom-table-container') &&
-        !clickedElement.closest('.custom-table')
+        !clickedElement.closest('.custom-table') &&
+        !clickedElement.closest('.caret')
       ) {
         this.adminOptions = false;
-        this.firstClickAfterOpen = false;
+        this.adminFirstClickAfterOpen = false;
       }
     }
   }

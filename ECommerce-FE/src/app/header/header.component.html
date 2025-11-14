@@ -1,35 +1,22 @@
 <div class="container">
   <div class="icons">
     <i class="bi bi-house-fill" (click)="goToHome()"></i>
-    <i class="bi bi-cart-fill" (click)="goToCart()"
-      ><span class="cartStatus"
-        ><b>{{ cartItemsSize$ | async }}</b></span
-      ></i
-    >
+    <i class="bi bi-cart-fill" (click)="goToCart()"><span class="cartStatus"><b>{{ cartItemsSize$ | async
+          }}</b></span></i>
   </div>
   <div class="admin">
     <div class="administrator" (click)="openLoginForm()">
-      {{ administrator }}
+      {{ administrator }} &nbsp; <i class="bi bi-person-fill" style="font-size: 24px; cursor: pointer;"></i>
     </div>
 
     <div *ngIf="loginActivated" class="login-form">
       <div class="form-group">
         <label for="user_name">Username</label>
-        <input
-          type="text"
-          name="user_name"
-          class="form-control form"
-          [(ngModel)]="username"
-        />
+        <input type="text" name="user_name" class="form-control form" [(ngModel)]="username" />
       </div>
       <div class="form-group">
         <label for="pword">Password</label>
-        <input
-          type="password"
-          name="pword"
-          class="form-control form"
-          [(ngModel)]="password"
-        />
+        <input type="password" name="pword" class="form-control form" [(ngModel)]="password" />
       </div>
       <div class="btn-container">
         <div class="error">{{ errorMsg }}</div>
@@ -37,12 +24,8 @@
       </div>
     </div>
 
-    <div>
-      <i
-        *ngIf="caretDownActivated"
-        class="caret bi bi-caret-down-fill"
-        (click)="openAdminOptions()"
-      ></i>
+    <div (click)="openAdminOptions()">
+      <i *ngIf="caretDownActivated" class="caret bi bi-caret-down-fill"></i>
 
       <div *ngIf="adminOptions" class="custom-table-container">
         <table class="table custom-table">

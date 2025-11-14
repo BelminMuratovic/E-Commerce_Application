@@ -22,6 +22,7 @@ import { ToastrService } from 'ngx-toastr';
 export class ShippingComponent implements OnInit {
   products: Map<number, ProductResponse> = new Map<number, ProductResponse>();
   orderedProducts: ProductResponse[] = [];
+  cartItemsSize: number = 0;
 
   shippingData = {
     name: '',
@@ -30,17 +31,6 @@ export class ShippingComponent implements OnInit {
 
   newOrder: boolean = true;
   ordered: boolean = false;
-
-  cartItemsSize: number = 0;
-  navbarfixed: boolean = false;
-
-  @HostListener('window:scroll', ['$event']) onscroll() {
-    if (window.scrollY > 100) {
-      this.navbarfixed = true;
-    } else {
-      this.navbarfixed = false;
-    }
-  }
 
   constructor(
     public cartItemsService: CartItemsService,

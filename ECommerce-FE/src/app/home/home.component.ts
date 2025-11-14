@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
 import { BoxComponent } from '../box/box.component';
 import { CommonModule } from '@angular/common';
@@ -16,19 +16,10 @@ import { forkJoin } from 'rxjs';
 })
 export class HomeComponent implements OnInit {
   products: ProductDisplay[] = [];
-  navbarfixed: boolean = false;
 
   retrievedImage: string = '';
   base64Data: any;
   retrieveResonse: any;
-
-  @HostListener('window:scroll', ['$event']) onscroll() {
-    if (window.scrollY > 100) {
-      this.navbarfixed = true;
-    } else {
-      this.navbarfixed = false;
-    }
-  }
 
   constructor(
     public cartItemsService: CartItemsService,

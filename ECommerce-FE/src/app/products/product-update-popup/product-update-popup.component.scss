@@ -8,7 +8,7 @@
   margin: 0 auto;
   padding: 20px;
   position: fixed;
-  top: 90px;
+  top: 150px;
   transform: translateY(-10%);
   background-color: white;
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.1), 0 0 60px rgba(0, 0, 0, 0.2);
@@ -23,12 +23,12 @@ h3 {
 .form {
   padding: 5px;
   margin-top: 5px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .btn {
   background-color: rgb(35, 83, 196);
-  padding: 5px;
+  padding: 3px;
   padding-left: 10px;
   padding-right: 10px;
   border-color: rgb(35, 83, 196);

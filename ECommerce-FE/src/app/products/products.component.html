@@ -1,23 +1,10 @@
-<nav
-  class="navbar"
-  (scroll)="onscroll()"
-  [ngClass]="navbarfixed ? 'fixed' : 'nofixed'"
->
-  <app-header></app-header>
-</nav>
-
 <div class="container">
   <div class="btn-container">
     <button class="btn btn-dark" (click)="newProduct()">New Product</button>
   </div>
   <div class="search-bar">
     <form>
-      <input
-        type="text"
-        [formControl]="searchControl"
-        placeholder="Search..."
-        class="form-control form"
-      />
+      <input type="text" [formControl]="searchControl" placeholder="Search..." class="form-control form" />
     </form>
   </div>
 
@@ -40,8 +27,9 @@
         <td class="title">{{ prod.name }}</td>
         <td class="quantity">{{ prod.quantity }}</td>
         <td class="price">&euro;{{ prod.price }}</td>
-        <td class="edit"><span class="edit-text" (click)="edit(i)">edit</span></td>
-        <td class="delete"><span class="delete-text" (click)="delete(i)">delete</span></td>
+        <td class="edit"><i class="bi bi-pencil" style="cursor:pointer;" (click)="edit(i)"></i></td>
+        <td class="delete"><i class="bi bi-trash" (click)="delete(i)" style="cursor:pointer; margin-right: 10px;"></i>
+        </td>
       </tr>
     </tbody>
   </table>

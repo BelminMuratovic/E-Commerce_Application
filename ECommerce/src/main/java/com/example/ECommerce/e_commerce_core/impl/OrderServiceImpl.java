@@ -7,9 +7,7 @@ import com.example.ECommerce.e_commerce_api.model.order.OrderUpdateRequest;
 import com.example.ECommerce.e_commerce_core.mapper.OrderMapper;
 import com.example.ECommerce.e_commerce_dao.model.OrderEntity;
 import com.example.ECommerce.e_commerce_dao.repository.OrderRepository;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -19,17 +17,11 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Service
-@AllArgsConstructor
 @RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService {
 
-    @Autowired
-    private OrderRepository orderRepository;
-    private OrderMapper orderMapper;
-
-    public OrderServiceImpl(OrderMapper orderMapper) {
-        this.orderMapper = orderMapper;
-    }
+    final private OrderRepository orderRepository;
+    final private OrderMapper orderMapper;
 
     @Override
     public ResponseEntity<List<Order>> getOrders() throws Exception {

@@ -6,7 +6,6 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CommerceService } from '../shared/commerce.service';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { forkJoin } from 'rxjs';
-import { ToastrService } from 'ngx-toastr';
 import { ProductUpdatePopupComponent } from './product-update-popup/product-update-popup.component';
 import { ProductCreatePopupComponent } from './product-create-popup/product-create-popup.component';
 import { ProductDeletePopupComponent } from './product-delete-popup/product-delete-popup.component';
@@ -21,20 +20,10 @@ import { ProductDeletePopupComponent } from './product-delete-popup/product-dele
 export class ProductsComponent implements OnInit {
   products: ProductResponse[] = [];
   searchControl = new FormControl('');
-  navbarfixed: boolean = false;
-
-  @HostListener('window:scroll', ['$event']) onscroll() {
-    if (window.scrollY > 100) {
-      this.navbarfixed = true;
-    } else {
-      this.navbarfixed = false;
-    }
-  }
 
   constructor(
     private commerceService: CommerceService,
-    public dialog: MatDialog,
-    private toastr: ToastrService
+    public dialog: MatDialog
   ) {}
 
   ngOnInit() {

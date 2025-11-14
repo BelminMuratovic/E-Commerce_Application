@@ -13,17 +13,8 @@ import { CommerceService } from '../shared/commerce.service';
   styleUrl: './cart-items.component.scss',
 })
 export class CartItemsComponent implements OnInit {
-  navbarfixed: boolean = false;
   cartItemsSize: number = 0;
   quantityOfProduct: number = 0;
-
-  @HostListener('window:scroll', ['$event']) onscroll() {
-    if (window.scrollY > 100) {
-      this.navbarfixed = true;
-    } else {
-      this.navbarfixed = false;
-    }
-  }
 
   constructor(
     private router: Router,

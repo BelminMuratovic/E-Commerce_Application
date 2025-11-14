@@ -1,11 +1,3 @@
-<nav
-  class="navbar"
-  (scroll)="onscroll()"
-  [ngClass]="navbarfixed ? 'fixed' : 'nofixed'"
->
-  <app-header></app-header>
-</nav>
-
 <div class="title">Shopping cart</div>
 
 <div class="custom-table-container">
@@ -15,8 +7,8 @@
         <td colspan="2">
           You have <b>{{ cartItemsService.cartItemsSize }}</b> items in cart
         </td>
-        <td class="clearCartText alignRight" (click)="clearCart()">
-          <span>Clear Shopping Cart</span>
+        <td class="clearCartText alignRight">
+          <span><i class="bi bi-trash" (click)="clearCart()" style="cursor:pointer; margin-right: 10px;"></i></span>
         </td>
       </tr>
       <tr class="spacer-row">
@@ -33,17 +25,11 @@
         <td class="product">{{ prod[1].name }}</td>
         <td class="quantityTd">
           <div class="addingInCart">
-            <button
-              class="minusBtn"
-              (click)="decreaseProductQuantity(prod[1].id)"
-            >
+            <button class="minusBtn" (click)="decreaseProductQuantity(prod[1].id)">
               -
             </button>
             <div class="showQuantity">{{ prod[1].quantity }} in cart</div>
-            <button
-              class="plusBtn"
-              (click)="increaseProductQuantity(prod[1].id)"
-            >
+            <button class="plusBtn" (click)="increaseProductQuantity(prod[1].id)">
               +
             </button>
           </div>

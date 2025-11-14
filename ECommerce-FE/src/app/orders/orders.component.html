@@ -1,19 +1,6 @@
-<nav
-  class="navbar"
-  (scroll)="onscroll()"
-  [ngClass]="navbarfixed ? 'fixed' : 'nofixed'"
->
-  <app-header></app-header>
-</nav>
-
 <div class="container">
   <div class="search-bar">
-    <input
-      type="text"
-      [formControl]="searchControl"
-      placeholder="Search..."
-      class="form-control form"
-    />
+    <input type="text" [formControl]="searchControl" placeholder="Search..." class="form-control form" />
   </div>
 
   <table class="table table-striped">
@@ -23,7 +10,9 @@
         <th class="name">Name</th>
         <th class="address">Address</th>
         <th class="date">Date</th>
+        <th class="preview"></th>
         <th class="edit"></th>
+        <th class="delete"></th>
       </tr>
     </thead>
     <tbody>
@@ -32,8 +21,10 @@
         <td class="name">{{ order.name }}</td>
         <td class="address">{{ order.address }}</td>
         <td class="date">{{ order.date | date : "dd.MM.yyyy." }}</td>
-        <td class="edit"><span class="edit-text" (click)="updateOrder(i)">edit</span></td>
-        <td class="delete"><span class="delete-text" (click)="delete(i)">delete</span></td>
+        <td class="preview"><i class="bi bi-eye" style="cursor:pointer;" (click)="preview(i)"></i></td>
+        <td class="edit"><i class="bi bi-pencil" style="cursor:pointer;" (click)="edit(i)"></i></td>
+        <td class="delete"><i class="bi bi-trash" (click)="delete(i)" style="cursor:pointer; margin-right: 10px;"></i>
+        </td>
       </tr>
     </tbody>
   </table>

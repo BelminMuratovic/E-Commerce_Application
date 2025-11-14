@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
 import { CommonModule } from '@angular/common';
 import { OrderResponse } from '../shared/commerce.model';
@@ -8,6 +8,7 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { OrderUpdatePopupComponent } from './order-update-popup/order-update-popup.component';
 import { OrderDeletePopupComponent } from './order-delete-popup/order-delete-popup.component';
+import { OrderPreviewPopupComponent } from './order-preview-popup/order-preview-popup.component';
 
 @Component({
   selector: 'app-orders',
@@ -18,16 +19,6 @@ import { OrderDeletePopupComponent } from './order-delete-popup/order-delete-pop
 })
 export class OrdersComponent implements OnInit {
   searchControl = new FormControl('');
-  navbarfixed: boolean = false;
-
-  @HostListener('window:scroll', ['$event']) onscroll() {
-    if (window.scrollY > 100) {
-      this.navbarfixed = true;
-    } else {
-      this.navbarfixed = false;
-    }
-  }
-
   orders: OrderResponse[] = [];
 
   constructor(
@@ -59,7 +50,20 @@ export class OrdersComponent implements OnInit {
     });
   }
 
-  updateOrder(index: number) {
+  preview(index: number) {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.width = '50%';
+    dialogConfig.panelClass = 'container';
+
+    const dialogRef = this.dialog.open(OrderPreviewPopupComponent, {
+      ...dialogConfig,
+      data: {
+        products: this.orders[index].products,
+      },
+    });
+  }
+
+  edit(index: number) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = '400px';
     dialogConfig.panelClass = 'container';

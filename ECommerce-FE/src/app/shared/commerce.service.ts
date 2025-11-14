@@ -21,7 +21,7 @@ export class CommerceService {
   // ***** Login and logout for administrator *****
 
   private isLoggedIn = false;
-  private username_: string = 'Administrator';
+  private username_: string = '';
 
   login(username: string, password: string) {
     if (username === 'Belmin' && password === '1111') {
@@ -35,7 +35,7 @@ export class CommerceService {
 
   logout(): void {
     this.isLoggedIn = false;
-    this.username_ = 'Administrator';
+    this.username_ = '';
   }
 
   isAuthenticated(): boolean {
@@ -191,10 +191,12 @@ export class CommerceService {
 
   getOrderByName(name: string): Observable<OrderResponse[]> {
     const queryParams = { name: name };
+    console.log(queryParams);
     return this.http
       .get<any>(ECommerceApi.GET_ORDERS_BY_NAME, { params: queryParams })
       .pipe(
         map((response) => {
+          console.log(response);
           return response;
         })
       );

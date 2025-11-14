@@ -1,11 +1,3 @@
-<nav
-  class="navbar"
-  (scroll)="onscroll()"
-  [ngClass]="navbarfixed ? 'fixed' : 'nofixed'"
->
-  <app-header></app-header>
-</nav>
-
 <div class="container">
   <div class="left">
     <div class="custom-table-container">
@@ -35,11 +27,7 @@
   <div class="right">
     <div class="gridContainer">
       <div class="divForBoxes" *ngFor="let product of products">
-        <app-box
-          *ngIf="product.quantity != 0"
-          [index]="product.id"
-          [prod]="product"
-        ></app-box>
+        <app-box *ngIf="product.quantity != 0" [index]="product.id" [prod]="product"></app-box>
       </div>
     </div>
   </div>

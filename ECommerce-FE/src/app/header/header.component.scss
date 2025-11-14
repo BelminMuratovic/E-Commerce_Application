@@ -4,20 +4,21 @@
 }
 
 .container {
-  width: 1310px;
-  height: 80px;
+  width: 100%;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin: 0 40px;
 }
 
-.container .icons {
-  width: 500px;
-  margin-left: 30px;
+.icons {
+  display: flex;
+  align-items: center;
+  gap: 40px;
 }
 
-.container .icons i {
-  margin-left: 40px;
+.icons i {
   font-size: 22px;
 }
 
@@ -31,8 +32,7 @@
   font-size: 12px;
 }
 
-.container .admin {
-  margin-right: 10px;
+.admin {
   display: flex;
   justify-content: space-between;
   position: relative;
@@ -71,7 +71,7 @@ label {
   font-weight: bold;
 }
 
-.form{
+.form {
   padding: 5px;
 }
 
