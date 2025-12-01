@@ -13,7 +13,5 @@ CREATE TABLE IF NOT EXISTS products (
     name VARCHAR(255) NOT NULL,
     quantity BIGINT NOT NULL,
     price BIGINT NOT NULL,
-    image_name VARCHAR(255),
-    image_type VARCHAR(255),
-    pic_byte BYTEA
+    image VARCHAR(255) NOT NULL
 );

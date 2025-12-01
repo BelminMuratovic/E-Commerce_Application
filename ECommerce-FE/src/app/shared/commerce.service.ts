@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import {
-  ImageProductResponse,
   OrderCreateRequest,
   OrderResponse,
   OrderUpdateRequest,
@@ -48,25 +47,9 @@ export class CommerceService {
 
   // ***** API's *****
 
-  createProduct(productRequest: ProductRequest): Observable<ProductResponse> {
+  createProduct(createProductRequest: FormData): Observable<ProductResponse> {
     return this.http
-      .post<any>(ECommerceApi.CREATE_PRODUCT, productRequest)
-      .pipe(
-        map((response) => {
-          return response;
-        })
-      );
-  }
-
-  uploadImage(image: FormData, id: number): Observable<any> {
-    return this.http
-      .put<any>(
-        ECommerceApi.UPLOAD_IMAGE_PRODUCT.replace('#id', '' + id),
-        image,
-        {
-          observe: 'response',
-        }
-      )
+      .post<any>(ECommerceApi.CREATE_PRODUCT, createProductRequest)
       .pipe(
         map((response) => {
           return response;
@@ -75,7 +58,7 @@ export class CommerceService {
   }
 
   updateProduct(
-    updateRequest: ProductRequest,
+    updateRequest: FormData,
     id: number
   ): Observable<ProductResponse> {
     return this.http
@@ -101,16 +84,6 @@ export class CommerceService {
   getProduct(id: number): Observable<ProductResponse> {
     return this.http
       .get<any>(ECommerceApi.GET_PRODUCT.replace('#id', '' + id))
-      .pipe(
-        map((response) => {
-          return response;
-        })
-      );
-  }
-
-  getImage(id: number): Observable<ImageProductResponse> {
-    return this.http
-      .get<any>(ECommerceApi.GET_IMAGE_PRODUCT.replace('#id', '' + id))
       .pipe(
         map((response) => {
           return response;

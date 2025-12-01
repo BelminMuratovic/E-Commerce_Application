@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "order")
+@RequestMapping("/api/v1/orders")
 @AllArgsConstructor
 public class OrderRestService {
     private OrderService orderService;
@@ -39,12 +39,13 @@ public class OrderRestService {
 
     @PutMapping(value = "{id}")
     public ResponseEntity<Order> update(@Parameter(required = true) @PathVariable("id") final Long id,
-                                        @RequestBody final OrderUpdateRequest request) throws Exception {
+            @RequestBody final OrderUpdateRequest request) throws Exception {
         return orderService.update(id, request);
     }
 
     @DeleteMapping(value = "{id}")
-    public ResponseEntity<Order> delete(@Parameter(required = true) @PathVariable("id") final Long id) throws Exception {
+    public ResponseEntity<Void> delete(@Parameter(required = true) @PathVariable("id") final Long id)
+            throws Exception {
         return orderService.delete(id);
     }
 }

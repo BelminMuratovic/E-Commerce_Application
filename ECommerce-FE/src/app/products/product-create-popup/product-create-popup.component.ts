@@ -14,65 +14,54 @@ import { HttpClient } from '@angular/common/http';
   styleUrl: './product-create-popup.component.scss',
 })
 export class ProductCreatePopupComponent {
-  data = {
-    productType: '',
-    productName: '',
-    productQuantity: 0,
-    productPrice: 0,
-  };
-
-  selectedFile!: File;
-  retrievedImage: any;
-  base64Data: any;
-  retrieveResonse: any;
-  imageName: any;
+  productType!: string;
+  productName!: string;
+  productQuantity?: Number;
+  productPrice?: Number;
+  selectedImage!: File;
 
   constructor(
     public dialogRef: MatDialogRef<ProductCreatePopupComponent>,
     private commerceService: CommerceService,
-    private toastr: ToastrService,
-    private httpClient: HttpClient
+    private toastr: ToastrService
   ) {}
 
   public onFileChanged(event: any) {
-    this.selectedFile = event.target.files[0];
+    this.selectedImage = event.target.files[0];
   }
 
   saveProduct() {
-    const newProduct = new ProductRequest(
-      this.data.productType,
-      this.data.productName,
-      this.data.productQuantity,
-      this.data.productPrice
-    );
+    const createProductRequest = new FormData();
+    if (this.productType) {
+      createProductRequest.append('type', this.productType);
+    }
 
-    this.commerceService
-      .createProduct(newProduct)
-      .subscribe((data: ProductResponse) => {
-        if (data) {
-          this.toastr.success('Product created!');
-          this.dialogRef.close();
+    if (this.productName) {
+      createProductRequest.append('name', this.productName);
+    }
+
+    if (this.productQuantity) {
+      createProductRequest.append('quantity', this.productQuantity.toString());
+    }
+
+    if (this.productPrice) {
+      createProductRequest.append('price', this.productPrice.toString());
+    }
+    createProductRequest.append('image', this.selectedImage);
+
+    this.commerceService.createProduct(createProductRequest).subscribe({
+      next: (data: ProductResponse) => {
+        this.toastr.success('Product created!');
+        this.dialogRef.close();
+      },
+      error: (error) => {
+        if (error.status === 400) {
+          this.toastr.error('Please check all required fields.');
         } else {
           this.toastr.error('Product creation failed!');
         }
-
-        const uploadImageData = new FormData();
-        uploadImageData.append(
-          'imageFile',
-          this.selectedFile,
-          this.selectedFile.name
-        );
-
-        this.commerceService
-          .uploadImage(uploadImageData, data.id)
-          .subscribe((response) => {
-            if (response.status === 200) {
-              console.log('Image uploaded successfully');
-            } else {
-              console.log('Image not uploaded successfully');
-            }
-          });
-      });
+      },
+    });
   }
 
   cancel() {

@@ -30,6 +30,7 @@ public class OrderServiceImpl implements OrderService {
         return new ResponseEntity<>(dtos, HttpStatus.OK);
     }
 
+    @Override
     public ResponseEntity<List<Order>> getOrdersByName(String name) throws Exception {
         List<OrderEntity> orderEntities = orderRepository.findByNameContaining(name);
         List<Order> dtos = orderMapper.entitiesToDtos(orderEntities);
@@ -53,7 +54,7 @@ public class OrderServiceImpl implements OrderService {
         OrderEntity orderEntity = orderMapper.dtoToEntity(request);
         orderEntity.setDate(LocalDate.now());
         orderRepository.save(orderEntity);
-        return new ResponseEntity<>(orderMapper.entityToDto(orderEntity), HttpStatus.OK);
+        return new ResponseEntity<>(orderMapper.entityToDto(orderEntity), HttpStatus.CREATED);
     }
 
     @Override
@@ -71,13 +72,13 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     @Transactional
-    public ResponseEntity<Order> delete(final Long orderId) throws Exception {
+    public ResponseEntity<Void> delete(final Long orderId) throws Exception {
         orderRepository.deleteById(orderId);
-        OrderEntity orderEntity = orderRepository.findById(orderId).orElse(null);
-        if (orderEntity == null) {
-            return new ResponseEntity<>(HttpStatus.OK);
+        boolean stillExists = orderRepository.existsById(orderId);
+        if (!stillExists) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } else {
-            return new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 }

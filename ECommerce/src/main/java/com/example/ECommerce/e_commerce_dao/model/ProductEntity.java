@@ -1,6 +1,5 @@
 package com.example.ECommerce.e_commerce_dao.model;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -24,12 +23,7 @@ public class ProductEntity {
     private Long id;
     private String type;
     private String name;
-    private Long quantity;
-    private Long price;
-    @Column(name = "image_name")
-    private String imageName;
-    @Column(name = "image_type")
-    private String imageType;
-    @Column(name = "pic_byte", length = 1000)
-    private byte[] picByte;
+    private Integer quantity;
+    private Integer price;
+    private String image;
 }

@@ -12,7 +12,6 @@ import java.util.List;
  */
 public interface OrderService {
 
-
     /**
      * Gets orders.
      *
@@ -65,5 +64,5 @@ public interface OrderService {
      * @return the response entity
      * @throws Exception the exception
      */
-    public ResponseEntity<Order> delete(final Long orderId) throws Exception;
+    public ResponseEntity<Void> delete(final Long orderId) throws Exception;
 }

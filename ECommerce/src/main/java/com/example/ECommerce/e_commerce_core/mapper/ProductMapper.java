@@ -15,19 +15,15 @@ import java.util.List;
 public interface ProductMapper {
 
     @Mapping(target = "id", ignore = true)
-    @Mapping(target = "imageName", ignore = true)
-    @Mapping(target = "imageType", ignore = true)
-    @Mapping(target = "picByte", ignore = true)
+    @Mapping(target = "image", ignore = true)
     ProductEntity dtoToEntity(ProductCreateRequest product);
 
+    @Mapping(target = "image", ignore = true)
     Product entityToDto(ProductEntity productEntity);
 
     @Mapping(target = "id", ignore = true)
-    @Mapping(target = "imageName", ignore = true)
-    @Mapping(target = "imageType", ignore = true)
-    @Mapping(target = "picByte", ignore = true)
+    @Mapping(target = "image", ignore = true)
     void updateEntity(ProductUpdateRequest product, @MappingTarget ProductEntity productEntity);
 
     List<Product> entitiesToDtos(List<ProductEntity> productEntity);
 }
-

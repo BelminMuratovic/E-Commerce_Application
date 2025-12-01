@@ -19,8 +19,8 @@ export class ProductUpdatePopupComponent {
     productName: '',
     productQuantity: 0,
     productPrice: 0,
-    productImage: '',
   };
+  selectedImage!: File;
 
   constructor(
     public dialogRef: MatDialogRef<ProductUpdatePopupComponent>,
@@ -31,23 +31,46 @@ export class ProductUpdatePopupComponent {
     this.data = { ...this.initialData };
   }
 
+  public onFileChanged(event: any) {
+    this.selectedImage = event.target.files[0];
+  }
+
   updateProduct() {
-    const updateProduct = new ProductRequest(
-      this.data.productType,
-      this.data.productName,
-      this.data.productQuantity,
-      this.data.productPrice
-    );
+    const updateProductRequest = new FormData();
+    if (this.data.productType) {
+      updateProductRequest.append('type', this.data.productType);
+    }
+
+    if (this.data.productName) {
+      updateProductRequest.append('name', this.data.productName);
+    }
+
+    if (this.data.productQuantity) {
+      updateProductRequest.append(
+        'quantity',
+        this.data.productQuantity.toString()
+      );
+    }
+
+    if (this.data.productPrice) {
+      updateProductRequest.append('price', this.data.productPrice.toString());
+    }
+    updateProductRequest.append('image', this.selectedImage);
 
     this.commerceService
-      .updateProduct(updateProduct, this.data.id)
-      .subscribe((data: ProductResponse) => {
-        if (data) {
+      .updateProduct(updateProductRequest, this.data.id)
+      .subscribe({
+        next: (data: ProductResponse) => {
           this.toastr.success('Product updated!');
           this.dialogRef.close();
-        } else {
-          this.toastr.error('Product update failed!');
-        }
+        },
+        error: (error) => {
+          if (error.status === 400) {
+            this.toastr.error('Please check all required fields.');
+          } else {
+            this.toastr.error('Product update failed!');
+          }
+        },
       });
   }
 

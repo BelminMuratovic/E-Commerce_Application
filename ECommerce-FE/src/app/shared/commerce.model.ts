@@ -1,5 +1,3 @@
-import { SafeUrl } from "@angular/platform-browser";
-
 export class Product {
   id: number;
   type: string;
@@ -22,15 +20,23 @@ export class Product {
 }
 
 export class ProductRequest {
-  type?: string;
-  name?: string;
-  quantity?: number;
-  price?: number;
-  constructor(type: string, name: string, quantity: number, price: number) {
+  type: string;
+  name: string;
+  quantity: number;
+  price: number;
+  image: File;
+  constructor(
+    type: string,
+    name: string,
+    quantity: number,
+    price: number,
+    image: File
+  ) {
     this.type = type;
     this.name = name;
     this.quantity = quantity;
     this.price = price;
+    this.image = image;
   }
 }
 
@@ -40,80 +46,29 @@ export class ProductResponse {
   name: string;
   quantity: number;
   price: number;
-  constructor(
-    id: number,
-    type: string,
-    name: string,
-    quantity: number,
-    price: number
-  ) {
-    this.id = id;
-    this.type = type;
-    this.name = name;
-    this.quantity = quantity;
-    this.price = price;
-  }
-}
-
-export class ProductDisplay {
-  id: number;
-  type: string;
-  name: string;
-  quantity: number;
-  price: number;
-  retrievedImage: string
+  image: string;
   constructor(
     id: number,
     type: string,
     name: string,
     quantity: number,
     price: number,
-    retrievedImage: string
+    image: string
   ) {
     this.id = id;
     this.type = type;
     this.name = name;
     this.quantity = quantity;
     this.price = price;
-    this.retrievedImage = retrievedImage;
-  }
-}
-
-export class ImageProductResponse {
-  id: number;
-  type: string;
-  name: string;
-  quantity: number;
-  price: number;
-  imageName: any;
-  imageType: any;
-  picByte: any;
-  constructor(
-    id: number,
-    type: string,
-    name: string,
-    quantity: number,
-    price: number,
-    imageName: any,
-    imageType: any,
-    picByte: any
-  ) {
-    this.id = id;
-    this.type = type;
-    this.name = name;
-    this.quantity = quantity;
-    this.price = price;
-    this.imageName = imageName;
-    this.imageType = imageType;
-    this.picByte = picByte;
+    this.image = image;
   }
 }
 
 export class OrderCreateRequest {
   name: string;
   address: string;
-  products: ProductResponse[];
-  constructor(name: string, address: string, products: ProductResponse[]) {
+  products: Product[];
+  constructor(name: string, address: string, products: Product[]) {
     this.name = name;
     this.address = address;
     this.products = products;

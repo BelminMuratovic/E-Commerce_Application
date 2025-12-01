@@ -1,10 +1,9 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
 import {
   OrderCreateRequest,
   OrderResponse,
-  ProductRequest,
-  ProductResponse,
+  Product,
 } from '../shared/commerce.model';
 import { CommonModule } from '@angular/common';
 import { CartItemsService } from '../cart-items/shared/cart-items.service';
@@ -20,8 +19,8 @@ import { ToastrService } from 'ngx-toastr';
   styleUrl: './shipping.component.scss',
 })
 export class ShippingComponent implements OnInit {
-  products: Map<number, ProductResponse> = new Map<number, ProductResponse>();
-  orderedProducts: ProductResponse[] = [];
+  products: Map<number, Product> = new Map<number, Product>();
+  orderedProducts: Product[] = [];
   cartItemsSize: number = 0;
 
   shippingData = {
@@ -51,7 +50,7 @@ export class ShippingComponent implements OnInit {
   moveProductsToArray() {
     for (let product of this.products) {
       this.orderedProducts.push(
-        new ProductResponse(
+        new Product(
           product[1].id,
           product[1].type,
           product[1].name,
@@ -85,18 +84,13 @@ export class ShippingComponent implements OnInit {
 
     for (let product of this.orderedProducts) {
       this.commerceService.getProduct(product.id).subscribe((data) => {
-        const updateRequest = new ProductRequest(
-          product.type,
-          product.name,
-          data.quantity - product.quantity,
-          product.price
-        );
-
-        this.commerceService
-          .updateProduct(updateRequest, product.id)
-          .subscribe((data) => {
-            console.log(data);
-          });
+        const updateProduct: any = {};
+        (updateProduct.quantity = data.quantity - product.quantity),
+          this.commerceService
+            .updateProduct(updateProduct, product.id)
+            .subscribe((data) => {
+              console.log(data);
+            });
       });
     }
 

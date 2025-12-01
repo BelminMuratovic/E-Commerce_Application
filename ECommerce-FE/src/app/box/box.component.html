@@ -1,6 +1,6 @@
 <div class="container">
   <div class="top">
-    <img [src]="prod.retrievedImage" width="350px" height="200px" />
+    <img [src]="'data:image/jpeg;base64,' + prod.image" width="350px" height="200px" />
   </div>
   <div class="name">{{ prod.name }}</div>
   <div class="price">€{{ prod.price }}</div>

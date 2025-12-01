@@ -16,11 +16,9 @@ INSERT INTO products (
         name,
         quantity,
         price,
-        image_name,
-        image_type,
-        pic_byte
+        image
     )
-VALUES ('Fruits', 'Banana', 100, 3, NULL, NULL, NULL),
-    ('Fruits', 'Apple', 1000, 2, NULL, NULL, NULL),
-    ('Fruits', 'Orange', 100, 4, NULL, NULL, NULL),
-    ('Vegetables', 'Tomato', 100, 3, NULL, NULL, NULL);
+VALUES ('Fruits', 'Banana', 100, 3, 'banana.jpg'),
+    ('Fruits', 'Apple', 1000, 2, 'apple.jpg'),
+    ('Fruits', 'Orange', 100, 4, 'orange.jpg'),
+    ('Vegetables', 'Tomato', 100, 3, 'tomato.jpg');

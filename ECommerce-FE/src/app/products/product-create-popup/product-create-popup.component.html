@@ -2,12 +2,7 @@
   <h3>New Product</h3>
 
   <label for="productType">Type</label>
-  <select
-    name="productType"
-    class="form-control form"
-    [(ngModel)]="data.productType"
-    required
-  >
+  <select name="productType" class="form-control form" [(ngModel)]="productType" required>
     <option value="Bread">Bread</option>
     <option value="Fruits">Fruits</option>
     <option value="Seasonings">Seasonings</option>
@@ -15,24 +10,15 @@
   </select>
 
   <label for="productName">Name</label>
-  <input type="text" class="form-control form" [(ngModel)]="data.productName" />
+  <input type="text" class="form-control form" [(ngModel)]="productName" />
 
   <label for="productQuantity">Quantity</label>
-  <input
-    type="text"
-    class="form-control form"
-    placeholder=""
-    [(ngModel)]="data.productQuantity"
-  />
+  <input type="text" class="form-control form" placeholder="" [(ngModel)]="productQuantity" />
 
   <label for="productPrice">Price</label>
-  <input
-    type="text"
-    class="form-control form"
-    placeholder=""
-    [(ngModel)]="data.productPrice"
-  />
+  <input type="text" class="form-control form" placeholder="" [(ngModel)]="productPrice" />
 
+  <label>Image</label>
   <div class="col-md-6">
     <input type="file" (change)="onFileChanged($event)" />
   </div>

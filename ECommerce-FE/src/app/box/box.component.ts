@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { CartItemsService } from '../cart-items/shared/cart-items.service';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-box',
@@ -14,6 +15,7 @@ export class BoxComponent implements OnInit {
   ifAdded: boolean = false;
   quantityOfProduct = 0;
   quantityOfSingleProduct: number = 0;
+  environment = environment;
 
   @Input() prod: any;
   @Input() index: number = 0;
