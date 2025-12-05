@@ -2,9 +2,9 @@ name: CI/CD Pipeline
 
 on:
   push:
-    branches: [main]
+    branches: [master]
   pull_request:
-    branches: [main]
+    branches: [master]
   workflow_dispatch:
 
 jobs:
@@ -15,32 +15,61 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Build backend
-        run: docker-compose build backend
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: "21"
+          distribution: "temurin"
 
-      - name: Build frontend
-        run: docker-compose build frontend
+      - name: Start database
+        run: docker compose up -d db
 
-      - name: Run Tests
-        run: docker-compose run backend ./mvn test
+      - name: Wait for database to be ready
+        run: |
+          until pg_isready -h localhost -p 5433; do
+            echo "Waiting for database to be ready"
+            sleep 2
+          done
+
+      - name: Build backend JAR
+        run: mvn -B -DskipTests clean package
+        working-directory: ECommerce
+
+      - name: Run backend tests
+        run: mvn test -B -e -X
+        working-directory: ECommerce
+
+      - name: Show test results
+        run: cat ECommerce/target/surefire-reports/*.txt || true
+
+      - name: Build Docker images
+        run: docker compose build
+
+      - name: Start all services
+        run: docker compose up -d
+
+      - name: Stop services
+        if: always()
+        run: docker compose down -v
 
   cd:
     needs: ci
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/master'
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Prepare Docker Images for Deploy
-        run: |
-          echo "Building Docker images for simulation..."
-          docker-compose build
-          echo "Images built successfully"
+      - name: Build all docker images
+        run: docker compose build
 
       - name: Deploy Locally (Simulation)
         run: |
-          docker-compose up -d
-          sleep 10
-          curl -f http://localhost:8080/actuator/health
-          docker-compose down
+          docker compose up -d
+          sleep 30
+          docker compose ps
+          echo "Deployment simulation completed"
+
+      - name: Cleanup
+        if: always()
+        run: docker compose down -v

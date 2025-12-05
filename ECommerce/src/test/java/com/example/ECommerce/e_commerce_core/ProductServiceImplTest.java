@@ -16,6 +16,8 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.test.context.DynamicPropertyRegistry;
+import org.springframework.test.context.DynamicPropertySource;
 
 import com.example.ECommerce.e_commerce_api.model.product.Product;
 import com.example.ECommerce.e_commerce_api.model.product.ProductCreateRequest;
@@ -27,6 +29,13 @@ import com.example.ECommerce.e_commerce_dao.repository.ProductRepository;
 
 @ExtendWith(MockitoExtension.class)
 public class ProductServiceImplTest {
+    @DynamicPropertySource
+    static void configureProperties(DynamicPropertyRegistry registry) {
+        registry.add("spring.datasource.url", () -> "jdbc:postgresql://localhost:5433/ecommerce");
+        registry.add("spring.datasource.username", () -> "postgres");
+        registry.add("spring.datasource.password", () -> "password");
+    }
+
     @Mock
     private ProductRepository productRepository;
 
