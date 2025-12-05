@@ -1,0 +1,46 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build backend
+        run: docker-compose build backend
+
+      - name: Build frontend
+        run: docker-compose build frontend
+
+      - name: Run Tests
+        run: docker-compose run backend ./mvn test
+
+  cd:
+    needs: ci
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Prepare Docker Images for Deploy
+        run: |
+          echo "Building Docker images for simulation..."
+          docker-compose build
+          echo "Images built successfully"
+
+      - name: Deploy Locally (Simulation)
+        run: |
+          docker-compose up -d
+          sleep 10
+          curl -f http://localhost:8080/actuator/health
+          docker-compose down
