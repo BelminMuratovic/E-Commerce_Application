@@ -24,6 +24,26 @@ Full-stack e-commerce web application with automated CI/CD pipeline, built with 
 - **Docker Compose**
 - **GitHub Actions**
 
+## Features
+
+- Admin panel
+- Product and order management (CRUD)
+- Categories and filtering
+- Shopping cart
+- Image upload for products
+- CI/CD pipeline with automated tests, build and deploy
+
+### Containerization
+
+- Docker Compose for multi-service orchestration
+- Separate Dockerfiles for backend (Java 21) and frontend (Node.js)
+
+### CI/CD Pipeline
+
+- Automated testing and build validation
+- Docker image building and service verification
+- Deployment simulation in pipeline
+
 ## Project Structure
 
 ```
@@ -55,7 +75,7 @@ cd E-Commerce_Application
 ### 2. Start the application
 
 ```bash
-docker compose up -d
+./scripts/setup.sh
 ```
 
 ### 3. Access the application
@@ -67,7 +87,7 @@ docker compose up -d
 ### 4. Stop the application
 
 ```bash
-docker compose down
+./scripts/cleanup.sh
 ```
 
 ## Development
