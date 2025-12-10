@@ -7,11 +7,7 @@ docker compose build
 
 # Start services
 echo "Starting services"
-docker compose up -d
-
-# Wait for services
-echo "Waiting for services to be ready"
-sleep 20
+docker compose up -d --wait
 
 # Show status
 echo "Service status"

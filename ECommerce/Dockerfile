@@ -17,6 +17,8 @@ WORKDIR /app
 COPY --from=build /app/target/ECommerce-0.0.1-SNAPSHOT.jar ./ECommerce.jar
 COPY --from=build /app/uploads ./uploads
 
+RUN apk add --no-cache curl
+
 EXPOSE 8080
 
 ENTRYPOINT ["java", "-jar", "ECommerce.jar"]
