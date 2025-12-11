@@ -44,6 +44,11 @@ Full-stack e-commerce web application with automated CI/CD pipeline, built with 
 - Docker image building and service verification
 - Deployment simulation in pipeline
 
+### How CI/CD Works
+
+**CI**: Run tests → Build Docker images → Start services → Verify health.
+**CD** (Simulation): Rebuild images → Start services locally → Verify health → Cleanup.
+
 ## Project Structure
 
 ```
@@ -62,6 +67,35 @@ Full-stack e-commerce web application with automated CI/CD pipeline, built with 
     └── workflows/
         └── ci-cd.yaml      # CI/CD pipeline
 ```
+
+## Configuration
+
+The application uses environment variables for configuration. These are managed through a `.env` file.
+
+### Environment Variables
+
+Create a `.env` file in the root directory:
+
+```bash
+cp .env.example .env
+```
+
+Available variables:
+
+| Variable            | Description           | Default     |
+| ------------------- | --------------------- | ----------- |
+| `POSTGRES_DB`       | Database name         | `ecommerce` |
+| `POSTGRES_USER`     | Database username     | `postgres`  |
+| `POSTGRES_PASSWORD` | Database password     | `password`  |
+| `POSTGRES_PORT`     | Database port         | `5432`      |
+| `BACKEND_PORT`      | Backend service port  | `8080`      |
+| `FRONTEND_PORT`     | Frontend service port | `4200`      |
+
+## Quick Start
+
+### 1. Clone the repository
+
+...
 
 ## Quick Start
 

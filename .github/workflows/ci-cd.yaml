@@ -23,7 +23,7 @@ jobs:
           cache: "maven"
 
       - name: Start database
-        run: docker compose up -d db
+        run: docker compose --env-file .env.example up -d db
 
       - name: Wait for database to be ready
         run: |
@@ -37,10 +37,10 @@ jobs:
         working-directory: ECommerce
 
       - name: Build docker images
-        run: docker compose build
+        run: docker compose --env-file .env.example build
 
       - name: Start all services
-        run: docker compose up -d
+        run: docker compose --env-file .env.example up -d
 
       - name: Verify services
         run: |
@@ -53,7 +53,7 @@ jobs:
 
       - name: Stop services
         if: always()
-        run: docker compose down -v
+        run: docker compose --env-file .env.example down -v
 
   cd:
     needs: ci
@@ -64,11 +64,11 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Build all docker images
-        run: docker compose build
+        run: docker compose --env-file .env.example build
 
       - name: Deploy Locally (Simulation)
         run: |
-          docker compose up -d
+          docker compose --env-file .env.example up -d
           timeout 200s bash -c 'until [ "$(docker inspect -f "{{.State.Health.Status}}" ecommerce-backend)" = "healthy" ]; do
               echo "Waiting for backend to be healthy"
               sleep 5
@@ -78,4 +78,4 @@ jobs:
 
       - name: Cleanup
         if: always()
-        run: docker compose down -v
+        run: docker compose --env-file .env.example down -v
