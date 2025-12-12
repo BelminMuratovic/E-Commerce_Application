@@ -73,3 +73,7 @@
 
 # Environment
 .env
+
+# Logs
+/logs/
+*.log
