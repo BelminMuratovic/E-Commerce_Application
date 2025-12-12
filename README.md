@@ -33,22 +33,6 @@ Full-stack e-commerce web application with automated CI/CD pipeline, built with 
 - Image upload for products
 - CI/CD pipeline with automated tests, build and deploy
 
-### Containerization
-
-- Docker Compose for multi-service orchestration
-- Separate Dockerfiles for backend (Java 21) and frontend (Node.js)
-
-### CI/CD Pipeline
-
-- Automated testing and build validation
-- Docker image building and service verification
-- Deployment simulation in pipeline
-
-### How CI/CD Works
-
-**CI**: Run tests → Build Docker images → Start services → Verify health.
-**CD** (Simulation): Rebuild images → Start services locally → Verify health → Cleanup.
-
 ## Project Structure
 
 ```
@@ -62,6 +46,8 @@ Full-stack e-commerce web application with automated CI/CD pipeline, built with 
 ├── ECommerce-FE/           # Angular frontend
 │   ├── src/
 │   └── Dockerfile
+├── logs                    # Backend logs
+├── scripts                 # Scripts for setup and cleanup
 ├── docker-compose.yaml     # Docker orchestration
 └── .github/
     └── workflows/
@@ -95,12 +81,6 @@ Available variables:
 
 ### 1. Clone the repository
 
-...
-
-## Quick Start
-
-### 1. Clone the repository
-
 ```bash
 git clone https://github.com/BelminMuratovic/E-Commerce_Application.git
 cd E-Commerce_Application
@@ -116,7 +96,7 @@ cd E-Commerce_Application
 
 - **Frontend:** http://localhost:4200
 - **Backend API:** http://localhost:8080
-- **Database:** localhost:5433
+- **Database:** localhost:5432
 
 ### 4. Stop the application
 
@@ -148,3 +128,37 @@ ng serve
 - Database: `ecommerce`
 - Username: `postgres`
 - Password: `password`
+
+## Testing
+
+### Backend Tests
+
+- **Unit tests**: Service layer
+- **Controller tests**: Endpoint behavior with mocked services (WebMvcTest)
+- **Integration test**: Health check endpoint, end-to-end validation
+
+### CI/CD Testing
+
+All tests run automatically in the CI pipeline:
+
+- Unit tests verify business logic
+- Controller tests validate API endpoints with mocked services
+- Integration test ensures service availability
+
+## DevOps Implementation
+
+### Containerization
+
+- Docker Compose for multi-service orchestration
+- Separate Dockerfiles for backend (Java 21) and frontend (Node.js)
+
+### CI/CD Pipeline
+
+- Automated testing and build validation
+- Docker image building and service verification
+- Deployment simulation in pipeline
+
+### How CI/CD Works
+
+**CI**: Run tests → Build Docker images → Start services → Verify health
+**CD** (Simulation): Rebuild images → Start services locally → Verify health → Cleanup

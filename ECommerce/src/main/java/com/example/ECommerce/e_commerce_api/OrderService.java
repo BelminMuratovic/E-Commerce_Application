@@ -18,7 +18,7 @@ public interface OrderService {
      * @return the orders
      * @throws Exception the exception
      */
-    public ResponseEntity<List<Order>> getOrders() throws Exception;
+    public ResponseEntity<List<Order>> getOrders();
 
     /**
      * Gets orders by name.
@@ -27,7 +27,7 @@ public interface OrderService {
      * @return the orders by name
      * @throws Exception the exception
      */
-    public ResponseEntity<List<Order>> getOrdersByName(String name) throws Exception;
+    public ResponseEntity<List<Order>> getOrdersByName(String name);
 
     /**
      * Find order by id response entity.
@@ -36,7 +36,7 @@ public interface OrderService {
      * @return the response entity
      * @throws Exception the exception
      */
-    public ResponseEntity<Order> findOrderById(final Long orderId) throws Exception;
+    public ResponseEntity<Order> findOrderById(final Long orderId);
 
     /**
      * Create response entity.
@@ -45,7 +45,7 @@ public interface OrderService {
      * @return the response entity
      * @throws Exception the exception
      */
-    public ResponseEntity<Order> create(final OrderCreateRequest request) throws Exception;
+    public ResponseEntity<Order> create(final OrderCreateRequest request);
 
     /**
      * Update response entity.
@@ -55,7 +55,7 @@ public interface OrderService {
      * @return the response entity
      * @throws Exception the exception
      */
-    public ResponseEntity<Order> update(final Long orderId, final OrderUpdateRequest request) throws Exception;
+    public ResponseEntity<Order> update(final Long orderId, final OrderUpdateRequest request);
 
     /**
      * Delete response entity.
@@ -64,5 +64,5 @@ public interface OrderService {
      * @return the response entity
      * @throws Exception the exception
      */
-    public ResponseEntity<Void> delete(final Long orderId) throws Exception;
+    public ResponseEntity<Void> delete(final Long orderId);
 }

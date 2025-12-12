@@ -18,7 +18,7 @@ public interface ProductService {
      * @return the products
      * @throws Exception the exception
      */
-    public ResponseEntity<List<Product>> getProducts() throws Exception;
+    public ResponseEntity<List<Product>> getProducts();
 
     /**
      * Gets products by type.
@@ -27,7 +27,7 @@ public interface ProductService {
      * @return the products by type
      * @throws Exception the exception
      */
-    public ResponseEntity<List<Product>> getProductsByType(String type) throws Exception;
+    public ResponseEntity<List<Product>> getProductsByType(String type);
 
     /**
      * Gets products by name.
@@ -36,7 +36,7 @@ public interface ProductService {
      * @return the products by name
      * @throws Exception the exception
      */
-    public ResponseEntity<List<Product>> getProductsByName(String name) throws Exception;
+    public ResponseEntity<List<Product>> getProductsByName(String name);
 
     /**
      * Find product by id response entity.
@@ -45,7 +45,7 @@ public interface ProductService {
      * @return the response entity
      * @throws Exception the exception
      */
-    public ResponseEntity<Product> findProductById(final Long productId) throws Exception;
+    public ResponseEntity<Product> findProductById(final Long productId);
 
     /**
      * Create response entity.
@@ -54,7 +54,7 @@ public interface ProductService {
      * @return the response entity
      * @throws Exception the exception
      */
-    public ResponseEntity<Product> create(final ProductCreateRequest request) throws Exception;
+    public ResponseEntity<Product> create(final ProductCreateRequest request);
 
     /**
      * Update response entity.
@@ -64,7 +64,7 @@ public interface ProductService {
      * @return the response entity
      * @throws Exception the exception
      */
-    public ResponseEntity<Product> update(final Long productId, final ProductUpdateRequest request) throws Exception;
+    public ResponseEntity<Product> update(final Long productId, final ProductUpdateRequest request);
 
     /**
      * Delete response entity.
@@ -73,5 +73,5 @@ public interface ProductService {
      * @return the response entity
      * @throws Exception the exception
      */
-    public ResponseEntity<Void> delete(final Long productId) throws Exception;
+    public ResponseEntity<Void> delete(final Long productId);
 }
