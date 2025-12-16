@@ -26,12 +26,10 @@ Full-stack e-commerce web application with automated CI/CD pipeline, built with 
 
 ## Features
 
-- Admin panel
-- Product and order management (CRUD)
-- Categories and filtering
-- Shopping cart
-- Image upload for products
-- CI/CD pipeline with automated tests, build and deploy
+- CRUD operations for products and orders
+- Shopping cart functionality
+- Product image upload
+- CI/CD pipeline with automated tests and Docker builds
 
 ## Project Structure
 
@@ -49,6 +47,7 @@ Full-stack e-commerce web application with automated CI/CD pipeline, built with 
 ├── logs                    # Backend logs
 ├── scripts                 # Scripts for setup and cleanup
 ├── docker-compose.yaml     # Docker orchestration
+├── Makefile
 └── .github/
     └── workflows/
         └── ci-cd.yaml      # CI/CD pipeline
@@ -92,6 +91,12 @@ cd E-Commerce_Application
 ./scripts/setup.sh
 ```
 
+or
+
+```bash
+make up
+```
+
 ### 3. Access the application
 
 - **Frontend:** http://localhost:4200
@@ -102,6 +107,24 @@ cd E-Commerce_Application
 
 ```bash
 ./scripts/cleanup.sh
+```
+
+or
+
+```bash
+make down
+```
+
+### View logs
+
+```bash
+make logs
+```
+
+or
+
+```bash
+tail -f logs/application.log
 ```
 
 ## Development
@@ -122,12 +145,6 @@ cd ECommerce-FE
 npm install
 ng serve
 ```
-
-### Database Setup
-
-- Database: `ecommerce`
-- Username: `postgres`
-- Password: `password`
 
 ## Testing
 
@@ -158,7 +175,7 @@ All tests run automatically in the CI pipeline:
 - Docker image building and service verification
 - Deployment simulation in pipeline
 
-### How CI/CD Works
+### CI/CD Overview
 
-**CI**: Run tests → Build Docker images → Start services → Verify health
-**CD** (Simulation): Rebuild images → Start services locally → Verify health → Cleanup
+- CI runs automated tests and builds Docker images.
+- CD is simulated by starting the services and verifying application health.
